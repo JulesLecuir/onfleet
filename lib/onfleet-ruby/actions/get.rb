@@ -2,10 +2,13 @@ module Onfleet
   module Actions
     module Get
       module ClassMethods
-        def get(id)
-          api_url = "#{self.api_url}/#{id}"
-          response = Onfleet.request(api_url, :get)
+        def get(id, filters = {})
+          response = Onfleet.request(get_url_for(id, filters), :get)
           Util.constantize(name).new(response)
+        end
+
+        def get_url_for(id, filters)
+          ["#{self.api_url}/#{id}", query_params(filters)].compact.join('?')
         end
       end
 
