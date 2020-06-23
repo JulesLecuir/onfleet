@@ -12,7 +12,7 @@ module Onfleet
             response = Onfleet.request(all_url_for(filters), :get)
 
             # Add queried tasks to the big array
-            all_elements += response["tasks"].compact
+            all_elements += response["tasks"]
 
             # If there is no last_id, it means that there is no pagination. Go out of the loop. Else, stay here, and...
             break unless response["lastId"]
@@ -21,7 +21,7 @@ module Onfleet
             filters[:lastId] = response["lastId"]
           end
 
-          all_elements.map { |item| new(item) }
+          all_elements.compact.map { |item| new(item) }
         end
 
 
