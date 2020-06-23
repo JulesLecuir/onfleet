@@ -4,6 +4,7 @@ module Onfleet
     include Onfleet::Actions::Save
     include Onfleet::Actions::Update
     include Onfleet::Actions::Get
+    include Onfleet::Actions::All
     include Onfleet::Actions::List
     include Onfleet::Actions::Delete
     include Onfleet::Actions::QueryMetadata
