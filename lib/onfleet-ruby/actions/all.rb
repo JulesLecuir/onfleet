@@ -32,12 +32,6 @@ module Onfleet
           ["#{self.api_url}/all", query_params(filters)].compact.join('?')
         end
 
-
-        def query_params(filters)
-          filters && filters
-                     .collect { |key, value| "#{key}=#{URI.encode_www_form_component(value)}" }
-                     .join('&')
-        end
       end
 
 

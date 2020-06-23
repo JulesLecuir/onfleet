@@ -7,6 +7,8 @@ module Onfleet
           Util.constantize(name).new(response)
         end
 
+        private
+
         def get_url_for(id, filters)
           ["#{self.api_url}/#{id}", query_params(filters)].compact.join('?')
         end
